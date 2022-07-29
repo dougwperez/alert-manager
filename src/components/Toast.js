@@ -45,17 +45,18 @@ const Toast = (props) => {
             className={`notification toast top-right`}
             style={{
               backgroundColor: toast.backgroundColor,
-              width: 300,
-              height: 65,
+              width: 440,
+              height: 92,
             }}
           >
             <div
               style={{
                 transform: "translateX(3px)",
-                transform: "translateY(-4px)",
+                transform: "translateY(-10px)",
               }}
             >
               <Alert
+                sx={{ height: 90, width: 412 }}
                 variant="filled"
                 severity={toast.severity}
                 onClose={() => deleteToast(toast.id)}

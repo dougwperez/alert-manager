@@ -14,12 +14,8 @@ function App() {
   const [position, setPosition] = useState("Select Position");
   let [checkValue, setCheckValue] = useState(false);
   const [autoDeleteTime, setAutoDeleteTime] = useState(0);
-  const [alertText, setAlertText] = useState(
-    "The task of art today is to bring chaos into order."
-  );
+  const [alertText, setAlertText] = useState("");
   const [alertLink, setAlertLink] = useState("");
-
-  // console.log("Koca: autoDeleteTime ", autoDeleteTime);
 
   const selectPosition = (e) => {
     setList([]);
