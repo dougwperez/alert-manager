@@ -33,10 +33,10 @@ export default function AlertExample() {
   };
 
   return (
-    <div>
-      <Button onClick={handleOpen}>
+    <div className="Alert-modal">
+      <Button onClick={handleOpen} type="submit">
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          Submit Alert
+          Create Alert
         </Typography>
       </Button>
       <Modal
@@ -47,49 +47,53 @@ export default function AlertExample() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Create an Alert
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            Submit an Alert
           </Typography>
 
           <form onSubmit={handleSubmit(onSubmit)}>
-            <label>First Name</label>
-            <Controller
-              render={({ field }) => <Input {...field} />}
-              name="firstName"
-              control={control}
-              defaultValue=""
-              className="materialUIInput"
-            />
-            <label>First Name</label>
+            <label>Text</label>
             <Controller
               render={({ field }) => <AntdInput {...field} />}
-              name="lastName"
+              name="Text"
               control={control}
               defaultValue=""
             />
-            <label>Ice Cream Preference</label>
+            <label>Link</label>
+            <Controller
+              render={({ field }) => <AntdInput {...field} />}
+              name="link"
+              control={control}
+              defaultValue=""
+            />
+            <label>Time Limit</label>
+            <Controller
+              render={({ field }) => <AntdInput {...field} />}
+              name="timeLimit"
+              control={control}
+              defaultValue=""
+            />
+            <label>Alert Type</label>
             <Controller
               name="iceCreamType"
               render={({ field }) => (
                 <Select
                   {...field}
                   options={[
-                    { value: "chocolate", label: "Chocolate" },
-                    { value: "strawberry", label: "Strawberry" },
-                    { value: "vanilla", label: "Vanilla" },
+                    { value: "error", label: "Error" },
+                    { value: "warning", label: "Warning" },
+                    { value: "info", label: "Info" },
+                    { value: "success", label: "Success" },
                   ]}
                 />
               )}
               control={control}
               defaultValue=""
             />
-            <Controller
+            {/* <Controller
               name="Checkbox"
               control={control}
               render={({ field }) => <Checkbox {...field} />}
-            />
+            /> */}
 
             <input type="submit" />
           </form>
