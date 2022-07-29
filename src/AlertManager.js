@@ -8,10 +8,18 @@ export default function Alerts() {
       sx={{ width: "25%", position: "absolute", top: 15, right: 15 }}
       spacing={2}
     >
-      <Alert severity="error">This is an error alert — check it out!</Alert>
-      <Alert severity="warning">This is a warning alert — check it out!</Alert>
-      <Alert severity="info">This is an info alert — check it out!</Alert>
-      <Alert severity="success">This is a success alert — check it out!</Alert>
+      <Alert severity="error" onClose={() => alert("close alert!")}>
+        This is an error alert — check it out!
+      </Alert>
+      <Alert severity="warning" onClose={() => alert("close alert!")}>
+        This is a warning alert — check it out!
+      </Alert>
+      <Alert severity="info" onClose={() => alert("close alert!")}>
+        This is an info alert — check it out!
+      </Alert>
+      <Alert severity="success" onClose={() => alert("close alert!")}>
+        This is a success alert — check it out!
+      </Alert>
     </Stack>
   );
 }
