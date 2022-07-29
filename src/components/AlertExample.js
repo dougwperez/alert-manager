@@ -7,7 +7,7 @@ import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { Checkbox, Input } from "@material-ui/core";
 import { Input as AntdInput } from "antd";
-import "./App.css";
+import "../App.css";
 
 const style = {
   position: "absolute",
@@ -17,6 +17,7 @@ const style = {
   width: 400,
   bgcolor: "background.paper",
   border: "2px solid #000",
+  borderRadius: 5,
   boxShadow: 24,
   p: 4,
 };
