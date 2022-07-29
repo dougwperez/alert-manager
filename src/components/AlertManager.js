@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import "../App.css";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import "../App.css";
 
 const Toast = (props) => {
   const { toastList, autoDelete, autoDeleteTime, alertText, alertLink } = props;

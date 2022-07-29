@@ -1,8 +1,7 @@
 import { useState } from "react";
 import logo from "./logo.svg";
-import Alerts from "./AlertManager.js";
 import AlertExample from "./components/AlertExample.js";
-import Toast from "./components/Toast.js";
+import Toast from "./components/AlertManager.js";
 
 import { BUTTON_PROPS, TOAST_PROPERTIES } from "./toastProperties";
 
@@ -35,7 +34,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Alerts />
         <br />
         <AlertExample
           showToast={showToast}

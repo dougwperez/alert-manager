@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -108,11 +107,6 @@ export default function AlertExample(props) {
               control={control}
               defaultValue=""
             />
-            {/* <Controller
-              name="Checkbox"
-              control={control}
-              render={({ field }) => <Checkbox {...field} />}
-            /> */}
 
             <input type="submit" disabled={!formState.isValid} />
           </form>
