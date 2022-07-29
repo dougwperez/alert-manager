@@ -14,6 +14,7 @@ function App() {
   const [position, setPosition] = useState("Select Position");
   let [checkValue, setCheckValue] = useState(false);
   const [autoDeleteTime, setAutoDeleteTime] = useState(0);
+  // console.log("Koca: autoDeleteTime ", autoDeleteTime);
 
   const selectPosition = (e) => {
     setList([]);
@@ -46,10 +47,13 @@ function App() {
         >
           Learn React
         </a> */}
-        <AlertExample showToast={showToast} />
+        <AlertExample
+          showToast={showToast}
+          setAutoDeleteTime={setAutoDeleteTime}
+        />
       </header>
       <>
-        {/* <div className="app">
+        <div className="app">
           <p>React Toast Component</p>
           <div className="select">
             <Checkmark
@@ -79,7 +83,7 @@ function App() {
               />
             ))}
           </div>
-        </div> */}
+        </div>
 
         <Toast
           toastList={list}

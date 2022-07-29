@@ -6,6 +6,8 @@ import Stack from "@mui/material/Stack";
 
 const Toast = (props) => {
   const { toastList, autoDelete, autoDeleteTime } = props;
+  console.log("Koca: autoDeleteTime ", autoDeleteTime);
+
   const [list, setList] = useState(toastList);
 
   useEffect(() => {
@@ -14,7 +16,7 @@ const Toast = (props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (autoDelete && toastList.length && list.length) {
+      if (toastList.length && list.length) {
         deleteToast(toastList[0].id);
       }
     }, autoDeleteTime);
@@ -24,7 +26,7 @@ const Toast = (props) => {
     };
 
     // eslint-disable-next-line
-  }, [toastList, autoDelete, autoDeleteTime, list]);
+  }, [toastList, autoDeleteTime, list]);
 
   const deleteToast = (id) => {
     const listItemIndex = list.findIndex((e) => e.id === id);

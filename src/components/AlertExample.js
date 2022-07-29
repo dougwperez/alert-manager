@@ -23,19 +23,24 @@ const style = {
 };
 
 export default function AlertExample(props) {
-  const { showToast } = props;
+  const { showToast, setAutoDeleteTime } = props;
   const [open, setOpen] = React.useState(false);
-  const { control, handleSubmit, reset } = useForm();
+  const { control, handleSubmit, reset, formState } = useForm({
+    mode: "onChange",
+  });
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const onSubmit = (data) => {
     // alert(JSON.stringify(data));
-    console.log("Koca: data ", data.severity.value);
-    showToast(data.severity.value);
-    handleClose();
-    reset();
+    if (data.severity.value) {
+      console.log("Koca: data ", data);
+      showToast(data.severity.value);
+      setAutoDeleteTime(parseInt(data.timeLimit * 1000, 10));
+      handleClose();
+      reset();
+    }
   };
 
   return (
@@ -103,7 +108,7 @@ export default function AlertExample(props) {
               render={({ field }) => <Checkbox {...field} />}
             /> */}
 
-            <input type="submit" />
+            <input type="submit" disabled={!formState.isValid} />
           </form>
         </Box>
       </Modal>
