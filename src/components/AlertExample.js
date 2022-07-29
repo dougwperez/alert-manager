@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -34,7 +35,6 @@ export default function AlertExample(props) {
 
   const onSubmit = (data) => {
     if (data.severity.value) {
-      console.log("Koca: data ", data);
       showToast(data.severity.value);
       setAutoDeleteTime(parseInt(data.timeLimit * 1000, 10));
       setAlertText(data.Text);

@@ -6,8 +6,6 @@ import Stack from "@mui/material/Stack";
 
 const Toast = (props) => {
   const { toastList, autoDelete, autoDeleteTime, alertText, alertLink } = props;
-  console.log("Koca: autoDeleteTime ", autoDeleteTime);
-
   const [list, setList] = useState(toastList);
 
   useEffect(() => {
@@ -63,7 +61,7 @@ const Toast = (props) => {
               >
                 <p className="notification-title">{toast.title}</p>
                 <p className="notification-message">{alertText}</p>
-                <a href={alertLink} rel="noreferrer">
+                <a href={alertLink} rel="noreferrer" target="_blank">
                   {alertLink}
                 </a>
               </Alert>
