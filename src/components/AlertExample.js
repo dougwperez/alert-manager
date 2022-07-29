@@ -6,7 +6,7 @@ import Modal from "@mui/material/Modal";
 import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { Checkbox, Input } from "@material-ui/core";
-import { Input as AntdInput } from "antd";
+import { Input as AntdInput, InputNumber } from "antd";
 import "../App.css";
 
 const style = {
@@ -22,15 +22,20 @@ const style = {
   p: 4,
 };
 
-export default function AlertExample() {
+export default function AlertExample(props) {
+  const { showToast } = props;
   const [open, setOpen] = React.useState(false);
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, reset } = useForm();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
+    console.log("Koca: data ", data.severity.value);
+    showToast(data.severity.value);
+    handleClose();
+    reset();
   };
 
   return (
@@ -52,6 +57,15 @@ export default function AlertExample() {
           </Typography>
 
           <form onSubmit={handleSubmit(onSubmit)}>
+            <label style={{ marginBottom: -1 }}>Time Limit</label>
+            <Controller
+              render={({ field }) => (
+                <InputNumber min={1} {...field} style={{ width: 50 }} />
+              )}
+              name="timeLimit"
+              control={control}
+              defaultValue="10"
+            />
             <label>Text</label>
             <Controller
               render={({ field }) => <AntdInput {...field} />}
@@ -66,16 +80,9 @@ export default function AlertExample() {
               control={control}
               defaultValue=""
             />
-            <label>Time Limit</label>
-            <Controller
-              render={({ field }) => <AntdInput {...field} />}
-              name="timeLimit"
-              control={control}
-              defaultValue=""
-            />
             <label>Alert Type</label>
             <Controller
-              name="iceCreamType"
+              name="severity"
               render={({ field }) => (
                 <Select
                   {...field}

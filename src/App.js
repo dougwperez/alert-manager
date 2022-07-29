@@ -46,10 +46,10 @@ function App() {
         >
           Learn React
         </a> */}
-        <AlertExample />
+        <AlertExample showToast={showToast} />
       </header>
       <>
-        <div className="app">
+        {/* <div className="app">
           <p>React Toast Component</p>
           <div className="select">
             <Checkmark
@@ -79,7 +79,7 @@ function App() {
               />
             ))}
           </div>
-        </div>
+        </div> */}
 
         <Toast
           toastList={list}
