@@ -5,7 +5,7 @@ import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
 const Toast = (props) => {
-  const { toastList, autoDelete, autoDeleteTime } = props;
+  const { toastList, autoDelete, autoDeleteTime, alertText, alertLink } = props;
   console.log("Koca: autoDeleteTime ", autoDeleteTime);
 
   const [list, setList] = useState(toastList);
@@ -61,7 +61,8 @@ const Toast = (props) => {
                 onClose={() => deleteToast(toast.id)}
               >
                 <p className="notification-title">{toast.title}</p>
-                <p className="notification-message">{toast.description}</p>
+                <p className="notification-message">{alertText}</p>
+                <p className="notification-message">{alertLink}</p>
               </Alert>
             </div>
           </div>

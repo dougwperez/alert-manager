@@ -23,7 +23,7 @@ const style = {
 };
 
 export default function AlertExample(props) {
-  const { showToast, setAutoDeleteTime } = props;
+  const { showToast, setAutoDeleteTime, setAlertText, setAlertLink } = props;
   const [open, setOpen] = React.useState(false);
   const { control, handleSubmit, reset, formState } = useForm({
     mode: "onChange",
@@ -33,11 +33,12 @@ export default function AlertExample(props) {
   const handleClose = () => setOpen(false);
 
   const onSubmit = (data) => {
-    // alert(JSON.stringify(data));
     if (data.severity.value) {
       console.log("Koca: data ", data);
       showToast(data.severity.value);
       setAutoDeleteTime(parseInt(data.timeLimit * 1000, 10));
+      setAlertText(data.Text);
+      setAlertLink(data.link);
       handleClose();
       reset();
     }
@@ -65,7 +66,12 @@ export default function AlertExample(props) {
             <label style={{ marginBottom: -1 }}>Time Limit</label>
             <Controller
               render={({ field }) => (
-                <InputNumber min={1} {...field} style={{ width: 50 }} />
+                <InputNumber
+                  min={1}
+                  max={10}
+                  {...field}
+                  style={{ width: 50 }}
+                />
               )}
               name="timeLimit"
               control={control}
@@ -78,7 +84,7 @@ export default function AlertExample(props) {
               control={control}
               defaultValue=""
             />
-            <label>Link</label>
+            <label>Link (URL)</label>
             <Controller
               render={({ field }) => <AntdInput {...field} />}
               name="link"
