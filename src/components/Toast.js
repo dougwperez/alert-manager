@@ -62,7 +62,9 @@ const Toast = (props) => {
               >
                 <p className="notification-title">{toast.title}</p>
                 <p className="notification-message">{alertText}</p>
-                <p className="notification-message">{alertLink}</p>
+                <a href={alertLink} rel="noreferrer">
+                  {alertLink}
+                </a>
               </Alert>
             </div>
           </div>
