@@ -23,8 +23,14 @@ const style = {
 
 export default function AlertExample() {
   const [open, setOpen] = React.useState(false);
+  const { control, handleSubmit } = useForm();
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+  };
 
   return (
     <div>
@@ -46,6 +52,47 @@ export default function AlertExample() {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
+
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label>First Name</label>
+            <Controller
+              render={({ field }) => <Input {...field} />}
+              name="firstName"
+              control={control}
+              defaultValue=""
+              className="materialUIInput"
+            />
+            <label>First Name</label>
+            <Controller
+              render={({ field }) => <AntdInput {...field} />}
+              name="lastName"
+              control={control}
+              defaultValue=""
+            />
+            <label>Ice Cream Preference</label>
+            <Controller
+              name="iceCreamType"
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  options={[
+                    { value: "chocolate", label: "Chocolate" },
+                    { value: "strawberry", label: "Strawberry" },
+                    { value: "vanilla", label: "Vanilla" },
+                  ]}
+                />
+              )}
+              control={control}
+              defaultValue=""
+            />
+            <Controller
+              name="Checkbox"
+              control={control}
+              render={({ field }) => <Checkbox {...field} />}
+            />
+
+            <input type="submit" />
+          </form>
         </Box>
       </Modal>
     </div>
