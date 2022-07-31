@@ -6,7 +6,6 @@ import "../App.css";
 
 const AlertComponent = (props) => {
   const { toast, alertLink, deleteToast } = props;
-  console.log("Koca: toast in Alert ", toast);
 
   return (
     <>

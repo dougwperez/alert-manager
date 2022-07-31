@@ -7,7 +7,6 @@ import "../App.css";
 
 const Toast = (props) => {
   const { toastList, autoDelete, autoDeleteTime, alertText, alertLink } = props;
-  console.log("Koca: toastList ", toastList);
   const [list, setList] = useState(toastList);
 
   useEffect(() => {

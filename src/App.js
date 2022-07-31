@@ -14,7 +14,6 @@ import "./App.css";
 
 function App() {
   const [list, setList] = useState([]);
-  console.log("Koca: list fareal", list);
   let [checkValue, setCheckValue] = useState(false);
   const [autoDeleteTime, setAutoDeleteTime] = useState(0);
   const [alertText, setAlertText] = useState("");
@@ -22,25 +21,11 @@ function App() {
   const [alertLink, setAlertLink] = useState("");
 
   const showToast = (type, text, obj) => {
-    console.log("LOOK HERE STUPID: ", obj);
     const toastProperties = TOAST_PROPERTIES.find((toast) => {
-      console.log("toast", toast);
       return toast.title.toLowerCase() === type;
     });
-    // const newObj = {
-    //   id: Math.floor(Math.random() * 101 + 1),
-    //   title: "HERRO",
-    //   description: text,
-    //   backgroundColor: "#d9534f",
-    //   severity: "error",
-    //   icon: errorIcon,
-    // };
 
-    // toastProperties["description"] = text;
     setList([...list, obj]);
-    console.log("Koca: list", list);
-
-    console.log("Koca: toastProperties$$$$$$$$ ", toastProperties.description);
   };
 
   return (

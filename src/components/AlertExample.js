@@ -42,15 +42,11 @@ export default function AlertExample(props) {
     mode: "onChange",
   });
   const [text, SetText] = React.useState("");
-  console.log("Koca: list !!!!!!!!! ", list);
-
-  // console.log("Koca: text ", text);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const onSubmit = (data) => {
-    console.log("Koca: data in ALERTEXAMPLE FUCIKKK", data);
     if (data.severity.value) {
       const newAlertObj = {
         id: Math.floor(Math.random() * 101 + 1),
