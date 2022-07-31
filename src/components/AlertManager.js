@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import AlertComponent from "./Alert.js";
 import "../App.css";
 
 const Toast = (props) => {
   const { toastList, autoDelete, autoDeleteTime, alertText, alertLink } = props;
+  console.log("Koca: toastList ", toastList);
   const [list, setList] = useState(toastList);
 
   useEffect(() => {
@@ -53,6 +55,7 @@ const Toast = (props) => {
                 transform: "translateY(-10px)",
               }}
             >
+              {/* <AlertComponent key={i} toast={toast} alertLink={alertLink} /> */}
               <Alert
                 sx={{ height: 90, width: 412 }}
                 variant="filled"
@@ -60,9 +63,9 @@ const Toast = (props) => {
                 onClose={() => deleteToast(toast.id)}
               >
                 <p className="notification-title">{toast.title}</p>
-                <p className="notification-message">{alertText}</p>
-                <a href={alertLink} rel="noreferrer" target="_blank">
-                  {alertLink}
+                <p className="notification-message">{toast.description}</p>
+                <a href={toast.link} rel="noreferrer" target="_blank">
+                  {toast.link}
                 </a>
               </Alert>
             </div>
@@ -75,7 +78,6 @@ const Toast = (props) => {
 
 Toast.propTypes = {
   toastList: PropTypes.array.isRequired,
-
   autoDelete: PropTypes.bool,
   autoDeleteTime: PropTypes.number,
 };

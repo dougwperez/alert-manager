@@ -9,6 +9,11 @@ import { Checkbox, Input } from "@material-ui/core";
 import { Input as AntdInput, InputNumber } from "antd";
 import "../App.css";
 
+import checkIcon from "../assets/check.svg";
+import errorIcon from "../assets/error.svg";
+import infoIcon from "../assets/info.svg";
+import warningIcon from "../assets/warning.svg";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -23,21 +28,45 @@ const style = {
 };
 
 export default function AlertExample(props) {
-  const { showToast, setAutoDeleteTime, setAlertText, setAlertLink } = props;
+  const {
+    showToast,
+    setAutoDeleteTime,
+    alertText,
+    setAlertText,
+    setAlertLink,
+    list,
+    setList,
+  } = props;
   const [open, setOpen] = React.useState(false);
   const { control, handleSubmit, reset, formState } = useForm({
     mode: "onChange",
   });
+  const [text, SetText] = React.useState("");
+  console.log("Koca: list !!!!!!!!! ", list);
+
+  // console.log("Koca: text ", text);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const onSubmit = (data) => {
+    console.log("Koca: data in ALERTEXAMPLE FUCIKKK", data);
     if (data.severity.value) {
-      showToast(data.severity.value);
+      const newAlertObj = {
+        id: Math.floor(Math.random() * 101 + 1),
+        title: data.severity.label,
+        description: data.Text,
+        link: data.link,
+        backgroundColor: "#2c5263",
+        borderRadius: 1,
+        severity: data.severity.value,
+        icon: errorIcon,
+      };
       setAutoDeleteTime(parseInt(data.timeLimit * 1000, 10));
       setAlertText(data.Text);
       setAlertLink(data.link);
+      SetText(data.Text);
+      showToast(data.severity.value, data.Text, newAlertObj);
       handleClose();
       reset();
     }
