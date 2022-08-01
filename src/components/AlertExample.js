@@ -28,20 +28,12 @@ const style = {
 };
 
 export default function AlertExample(props) {
-  const {
-    showToast,
-    setAutoDeleteTime,
-    alertText,
-    setAlertText,
-    setAlertLink,
-    list,
-    setList,
-  } = props;
+  const { showToast, setAutoDeleteTime } = props;
   const [open, setOpen] = React.useState(false);
   const { control, handleSubmit, reset, formState } = useForm({
     mode: "onChange",
   });
-  const [text, SetText] = React.useState("");
+  // const [text, SetText] = React.useState("");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -59,10 +51,7 @@ export default function AlertExample(props) {
         icon: errorIcon,
       };
       setAutoDeleteTime(parseInt(data.timeLimit * 1000, 10));
-      setAlertText(data.Text);
-      setAlertLink(data.link);
-      SetText(data.Text);
-      showToast(data.severity.value, data.Text, newAlertObj);
+      showToast(newAlertObj);
       handleClose();
       reset();
     }

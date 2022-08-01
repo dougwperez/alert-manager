@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
-import AlertComponent from "./Alert.js";
 import "../App.css";
 
 const Toast = (props) => {
-  const { toastList, autoDelete, autoDeleteTime, alertText, alertLink } = props;
+  const { toastList, autoDelete, autoDeleteTime } = props;
   const [list, setList] = useState(toastList);
 
   useEffect(() => {
@@ -38,38 +37,39 @@ const Toast = (props) => {
   return (
     <>
       <div className={`notification-container top-right`}>
-        {list.map((toast, i) => (
-          <div
-            key={i}
-            className={`notification toast top-right`}
-            style={{
-              backgroundColor: toast.backgroundColor,
-              width: 440,
-              height: 92,
-            }}
-          >
+        {list.map((toast, i) => {
+          return (
             <div
+              key={i}
+              className={`notification toast top-right`}
               style={{
-                transform: "translateX(3px)",
-                transform: "translateY(-10px)",
+                backgroundColor: toast.backgroundColor,
+                width: 440,
+                height: 92,
               }}
             >
-              {/* <AlertComponent key={i} toast={toast} alertLink={alertLink} /> */}
-              <Alert
-                sx={{ height: 90, width: 412 }}
-                variant="filled"
-                severity={toast.severity}
-                onClose={() => deleteToast(toast.id)}
+              <div
+                style={{
+                  transform: "translateX(3px)",
+                  transform: "translateY(-10px)",
+                }}
               >
-                <p className="notification-title">{toast.title}</p>
-                <p className="notification-message">{toast.description}</p>
-                <a href={toast.link} rel="noreferrer" target="_blank">
-                  {toast.link}
-                </a>
-              </Alert>
+                <Alert
+                  sx={{ height: 90, width: 412 }}
+                  variant="filled"
+                  severity={toast.severity}
+                  onClose={() => deleteToast(toast.id)}
+                >
+                  <p className="notification-title">{toast.title}</p>
+                  <p className="notification-message">{toast.description}</p>
+                  <a href={toast.link} rel="noreferrer" target="_blank">
+                    {toast.link}
+                  </a>
+                </Alert>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </>
   );
