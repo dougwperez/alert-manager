@@ -33,7 +33,6 @@ export default function AlertExample(props) {
   const { control, handleSubmit, reset, formState } = useForm({
     mode: "onChange",
   });
-  // const [text, SetText] = React.useState("");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
