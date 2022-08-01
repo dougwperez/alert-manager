@@ -8,8 +8,6 @@ import errorIcon from "./assets/error.svg";
 import infoIcon from "./assets/info.svg";
 import warningIcon from "./assets/warning.svg";
 
-// import { BUTTON_PROPS } from "./toastProperties";
-
 import "./App.css";
 
 function App() {
